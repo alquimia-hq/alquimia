@@ -9,7 +9,7 @@
   --bg-3: #1e170f;
   --ink: #ead9b8;
   --ink-2: #c9b689;
-  --ink-3: #8a7a5c;
+  --ink-3: #9d8b6a;
   --ink-4: #4a4230;
   --gold: #d99a3d;
   --gold-2: #f0b956;
@@ -91,6 +91,129 @@
   }
 }
 
+/* Easing tokens */
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Entrance animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-x-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes bg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 0.22; }
+}
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold), 0 8px 40px color-mix(in oklch, var(--gold) 25%, transparent); }
+  50% { box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold), 0 8px 60px color-mix(in oklch, var(--gold) 40%, transparent); }
+}
+
+.animate-entrance {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-timing-function: var(--ease-out-expo);
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-fade-in {
+  animation-name: fade-in;
+  animation-duration: 700ms;
+}
+
+.animate-bg-fade-in {
+  animation-name: bg-fade-in;
+  animation-duration: 700ms;
+}
+
+.animate-fade-up {
+  animation-name: fade-up;
+  animation-duration: 600ms;
+}
+
+.animate-fade-down {
+  animation-name: fade-down;
+  animation-duration: 600ms;
+}
+
+.animate-scale-x {
+  animation-name: scale-x-in;
+  animation-duration: 700ms;
+}
+
+/* Nav hover underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background: var(--gold);
+  transition: left 0.25s var(--ease-out-quart), right 0.25s var(--ease-out-quart);
+}
+
+.nav-link:hover::after {
+  left: 0;
+  right: 0;
+}
+
+/* Scroll reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-entrance,
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn-discord {
+    animation: none !important;
+  }
+}
+
 /* Background effects */
 .bg-vignette {
   background: radial-gradient(
@@ -117,14 +240,43 @@
 /* Button styles */
 .btn-discord {
   box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold),
-    0 8px 40px rgba(217, 154, 61, 0.25);
-  transition: all 0.25s ease;
+    0 8px 40px color-mix(in oklch, var(--gold) 25%, transparent);
+  transition: background-color 0.25s var(--ease-out-quart),
+    border-color 0.25s var(--ease-out-quart),
+    box-shadow 0.3s var(--ease-out-quart),
+    transform 0.25s var(--ease-out-quart);
 }
 
 .btn-discord:hover {
   background-color: var(--gold-2);
   border-color: var(--gold-2);
   box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold-2),
-    0 8px 60px rgba(240, 185, 86, 0.45);
+    0 8px 60px color-mix(in oklch, var(--gold-2) 45%, transparent);
   transform: translateY(-1px);
+}
+
+.btn-discord.cta-idle {
+  animation: cta-pulse 4s var(--ease-in-out) infinite;
+  animation-delay: 2.5s;
+}
+
+/* CTA celebration particles */
+@keyframes particle-rise {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(45deg) scale(0);
+  }
+}
+
+.cta-particle {
+  position: absolute;
+  pointer-events: none;
+  background: var(--gold);
+  animation: particle-rise 0.9s var(--ease-out-quart) forwards;
+  z-index: 10;
+  box-shadow: 0 0 6px color-mix(in oklch, var(--gold) 60%, transparent);
 }

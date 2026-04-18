@@ -16,14 +16,13 @@ export function BackgroundEffects() {
       <div className="fixed inset-0 z-[2] pointer-events-none bg-noise" />
 
       {/* Frame Corners */}
-      <div className="fixed inset-5 pointer-events-none z-[3]">
-        {/* Top Left */}
+      <div
+        className="animate-entrance animate-fade-in fixed inset-5 pointer-events-none z-[3]"
+        style={{ "--delay": "0ms" } as React.CSSProperties}
+      >
         <span className="absolute top-0 left-0 w-[22px] h-[22px] border border-gold opacity-55 border-r-0 border-b-0" />
-        {/* Top Right */}
         <span className="absolute top-0 right-0 w-[22px] h-[22px] border border-gold opacity-55 border-l-0 border-b-0" />
-        {/* Bottom Left */}
         <span className="absolute bottom-0 left-0 w-[22px] h-[22px] border border-gold opacity-55 border-r-0 border-t-0" />
-        {/* Bottom Right */}
         <span className="absolute bottom-0 right-0 w-[22px] h-[22px] border border-gold opacity-55 border-l-0 border-t-0" />
       </div>
     </>

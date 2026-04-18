@@ -28,7 +28,7 @@ export function HeroSection() {
       </div>
 
       {/* Title */}
-      <h1 className="font-[family-name:var(--font-cormorant)] font-normal text-[180px] leading-[0.9] tracking-[-0.03em] m-0 text-ink max-md:text-[96px] [text-shadow:0_0_60px_rgba(217,154,61,0.15)]">
+      <h1 className="font-[family-name:var(--font-cormorant)] font-normal text-[120px] leading-[0.9] tracking-[-0.03em] m-0 text-ink max-md:text-[72px] [text-shadow:0_0_60px_rgba(217,154,61,0.15)]">
         {SITE_CONTENT.hero.title}
         <em className="italic font-light text-gold">
           {SITE_CONTENT.hero.titleAccent}

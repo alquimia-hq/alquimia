@@ -12,7 +12,7 @@ export const SITE_CONTENT = {
     title: "Alquim",
     titleAccent: "ia",
     subtitle:
-      "Un laboratorio compartido donde aprendemos juntos a transmutar la curiosidad en conocimiento. Investigamos inteligencia artificial, automatización y productividad — como los antiguos filósofos naturales, con las herramientas de nuestro tiempo.",
+      "Una comunidad abierta y gratuita donde compartimos conocimiento sobre inteligencia artificial, automatización y productividad.",
   },
   
   cta: {

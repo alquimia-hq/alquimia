@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import {
   Cormorant_Garamond,
@@ -5,7 +6,6 @@ import {
   IM_Fell_English_SC,
   JetBrains_Mono,
 } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -35,10 +35,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alquimia — Comunidad",
+  title: "Alquimia | Comunidad",
   description:
-    "Un laboratorio compartido donde aprendemos juntos a transmutar la curiosidad en conocimiento.",
-  generator: "v0.app",
+    "Una comunidad abierta y gratuita donde compartimos conocimiento sobre inteligencia artificial, automatización y productividad.",
   icons: {
     icon: [
       {

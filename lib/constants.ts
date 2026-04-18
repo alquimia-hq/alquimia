@@ -18,6 +18,7 @@ export const SITE_CONTENT = {
   cta: {
     button: "Unirse al Discord",
     note: "entrada abierta",
+    discordUrl: "https://discord.gg/wkhHrWZC3Q",
   },
   
   pillars: [

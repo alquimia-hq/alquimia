@@ -56,7 +56,7 @@ export function HeroSection() {
           asChild
           className="btn-discord inline-flex items-center gap-4.5 px-11 py-5 h-auto bg-gold text-primary-foreground border border-gold font-[family-name:var(--font-im-fell)] tracking-[0.3em] uppercase text-[13px] cursor-pointer"
         >
-          <a href="#">
+          <a href={SITE_CONTENT.cta.discordUrl} target="_blank" rel="noopener noreferrer">
             <DiscordIcon className="w-[18px] h-[18px]" />
             <span>{SITE_CONTENT.cta.button}</span>
             <span className="font-serif text-[20px] tracking-normal italic">

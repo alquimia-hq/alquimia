@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --bg: #0a0806;
+  --bg-2: #120e09;
+  --bg-3: #1e170f;
+  --ink: #ead9b8;
+  --ink-2: #c9b689;
+  --ink-3: #8a7a5c;
+  --ink-4: #4a4230;
+  --gold: #d99a3d;
+  --gold-2: #f0b956;
+  --copper: #b86a2a;
+  --rule: rgba(217, 154, 61, 0.25);
+  --rule-2: rgba(217, 154, 61, 0.12);
+
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--bg-2);
+  --card-foreground: var(--ink);
+  --popover: var(--bg-2);
+  --popover-foreground: var(--ink);
+  --primary: var(--gold);
+  --primary-foreground: #1a1410;
+  --secondary: var(--bg-3);
+  --secondary-foreground: var(--ink);
+  --muted: var(--bg-2);
+  --muted-foreground: var(--ink-3);
+  --accent: var(--gold);
+  --accent-foreground: #1a1410;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: var(--rule-2);
+  --input: var(--rule);
+  --ring: var(--gold);
+  --radius: 0rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-eb-garamond), 'EB Garamond', serif;
+  --font-serif: var(--font-eb-garamond), 'EB Garamond', serif;
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-ornament: var(--font-im-fell), 'IM Fell English SC', serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-bg-3: var(--bg-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-copper: var(--copper);
+  --color-rule: var(--rule);
+  --color-rule-2: var(--rule-2);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Background effects */
+.bg-vignette {
+  background: radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 30%,
+      var(--bg) 95%
+    ),
+    linear-gradient(
+      180deg,
+      var(--bg) 0%,
+      transparent 15%,
+      transparent 75%,
+      var(--bg) 100%
+    );
+}
+
+.bg-noise {
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Button styles */
+.btn-discord {
+  box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold),
+    0 8px 40px rgba(217, 154, 61, 0.25);
+  transition: all 0.25s ease;
+}
+
+.btn-discord:hover {
+  background-color: var(--gold-2);
+  border-color: var(--gold-2);
+  box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold-2),
+    0 8px 60px rgba(240, 185, 86, 0.45);
+  transform: translateY(-1px);
+}

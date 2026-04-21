@@ -1,6 +1,6 @@
-import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { ImageResponse } from "next/og";
 
 export const alt =
   "Alquimia — Comunidad abierta sobre IA, automatización y productividad";
@@ -17,14 +17,12 @@ export default async function Image() {
   const [cormorantRegular, cormorantItalic, imFell, alchemistPng] =
     await Promise.all([
       readFile(
-        join(process.cwd(), "assets/fonts/CormorantGaramond-Regular.ttf"),
+        join(process.cwd(), "assets/fonts/CormorantGaramond-Regular.ttf")
       ),
       readFile(
-        join(process.cwd(), "assets/fonts/CormorantGaramond-Italic.ttf"),
+        join(process.cwd(), "assets/fonts/CormorantGaramond-Italic.ttf")
       ),
-      readFile(
-        join(process.cwd(), "assets/fonts/IMFellEnglishSC-Regular.ttf"),
-      ),
+      readFile(join(process.cwd(), "assets/fonts/IMFellEnglishSC-Regular.ttf")),
       readFile(join(process.cwd(), "public/images/alchemist.png"), "base64"),
     ]);
 
@@ -39,149 +37,147 @@ export default async function Image() {
   };
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: BG,
+        backgroundImage: `linear-gradient(180deg, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.15) 20%, rgba(10,8,6,0.15) 80%, rgba(10,8,6,0.55) 100%), url(${alchemistSrc})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
+        fontFamily: "Cormorant",
+      }}
+    >
       <div
         style={{
-          width: "100%",
-          height: "100%",
+          ...cornerBase,
+          top: 32,
+          left: 32,
+          borderTop: `1px solid ${GOLD}`,
+          borderLeft: `1px solid ${GOLD}`,
+        }}
+      />
+      <div
+        style={{
+          ...cornerBase,
+          top: 32,
+          right: 32,
+          borderTop: `1px solid ${GOLD}`,
+          borderRight: `1px solid ${GOLD}`,
+        }}
+      />
+      <div
+        style={{
+          ...cornerBase,
+          bottom: 32,
+          left: 32,
+          borderBottom: `1px solid ${GOLD}`,
+          borderLeft: `1px solid ${GOLD}`,
+        }}
+      />
+      <div
+        style={{
+          ...cornerBase,
+          bottom: 32,
+          right: 32,
+          borderBottom: `1px solid ${GOLD}`,
+          borderRight: `1px solid ${GOLD}`,
+        }}
+      />
+
+      <div
+        style={{
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: BG,
-          backgroundImage: `linear-gradient(180deg, rgba(10,8,6,0.35) 0%, rgba(10,8,6,0.15) 20%, rgba(10,8,6,0.15) 80%, rgba(10,8,6,0.55) 100%), url(${alchemistSrc})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-          fontFamily: "Cormorant",
+          gap: 36,
+          padding: "60px 100px",
+          background:
+            "radial-gradient(ellipse at center, rgba(10,8,6,0.88) 0%, rgba(10,8,6,0.78) 40%, rgba(10,8,6,0) 85%)",
+          width: "100%",
+          height: "100%",
         }}
       >
-
         <div
           style={{
-            ...cornerBase,
-            top: 32,
-            left: 32,
-            borderTop: `1px solid ${GOLD}`,
-            borderLeft: `1px solid ${GOLD}`,
+            display: "flex",
+            fontSize: 220,
+            lineHeight: 0.9,
+            letterSpacing: "-0.03em",
+            color: INK,
           }}
-        />
-        <div
-          style={{
-            ...cornerBase,
-            top: 32,
-            right: 32,
-            borderTop: `1px solid ${GOLD}`,
-            borderRight: `1px solid ${GOLD}`,
-          }}
-        />
-        <div
-          style={{
-            ...cornerBase,
-            bottom: 32,
-            left: 32,
-            borderBottom: `1px solid ${GOLD}`,
-            borderLeft: `1px solid ${GOLD}`,
-          }}
-        />
-        <div
-          style={{
-            ...cornerBase,
-            bottom: 32,
-            right: 32,
-            borderBottom: `1px solid ${GOLD}`,
-            borderRight: `1px solid ${GOLD}`,
-          }}
-        />
+        >
+          <span style={{ fontFamily: "Cormorant" }}>Alquim</span>
+          <span
+            style={{
+              fontFamily: "Cormorant Italic",
+              fontStyle: "italic",
+              color: GOLD,
+            }}
+          >
+            ia
+          </span>
+        </div>
 
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            gap: 36,
-            padding: "60px 100px",
-            background:
-              "radial-gradient(ellipse at center, rgba(10,8,6,0.88) 0%, rgba(10,8,6,0.78) 40%, rgba(10,8,6,0) 85%)",
-            width: "100%",
-            height: "100%",
+            width: 640,
+            gap: 20,
           }}
         >
           <div
             style={{
-              display: "flex",
-              fontSize: 220,
-              lineHeight: 0.9,
-              letterSpacing: "-0.03em",
-              color: INK,
+              flex: 1,
+              height: 1,
+              background: `linear-gradient(to right, transparent, ${RULE}, ${RULE})`,
             }}
+          />
+          <svg
+            fill="none"
+            height="32"
+            stroke={GOLD}
+            strokeWidth="1"
+            viewBox="0 0 40 40"
+            width="32"
           >
-            <span style={{ fontFamily: "Cormorant" }}>Alquim</span>
-            <span
-              style={{
-                fontFamily: "Cormorant Italic",
-                fontStyle: "italic",
-                color: GOLD,
-              }}
-            >
-              ia
-            </span>
-          </div>
-
+            <title>Alquimia divider</title>
+            <circle cx="20" cy="20" r="8" />
+            <path d="M20 4 L32 28 L8 28 Z" />
+            <circle cx="20" cy="20" fill={GOLD} r="1.5" />
+          </svg>
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              width: 640,
-              gap: 20,
+              flex: 1,
+              height: 1,
+              background: `linear-gradient(to right, ${RULE}, ${RULE}, transparent)`,
             }}
-          >
-            <div
-              style={{
-                flex: 1,
-                height: 1,
-                background: `linear-gradient(to right, transparent, ${RULE}, ${RULE})`,
-              }}
-            />
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 40 40"
-              fill="none"
-              stroke={GOLD}
-              strokeWidth="1"
-            >
-              <circle cx="20" cy="20" r="8" />
-              <path d="M20 4 L32 28 L8 28 Z" />
-              <circle cx="20" cy="20" r="1.5" fill={GOLD} />
-            </svg>
-            <div
-              style={{
-                flex: 1,
-                height: 1,
-                background: `linear-gradient(to right, ${RULE}, ${RULE}, transparent)`,
-              }}
-            />
-          </div>
+          />
+        </div>
 
-          <div
-            style={{
-              fontFamily: "IM Fell",
-              fontSize: 26,
-              letterSpacing: "0.32em",
-              color: INK_3,
-              textTransform: "uppercase",
-              textAlign: "center",
-              maxWidth: 980,
-              lineHeight: 1.5,
-              display: "flex",
-            }}
-          >
-            Comunidad abierta sobre IA, automatización y productividad
-          </div>
+        <div
+          style={{
+            fontFamily: "IM Fell",
+            fontSize: 26,
+            letterSpacing: "0.32em",
+            color: INK_3,
+            textTransform: "uppercase",
+            textAlign: "center",
+            maxWidth: 980,
+            lineHeight: 1.5,
+            display: "flex",
+          }}
+        >
+          Comunidad abierta sobre IA, automatización y productividad
         </div>
       </div>
-    ),
+    </div>,
     {
       ...size,
       fonts: [
@@ -204,6 +200,6 @@ export default async function Image() {
           weight: 400,
         },
       ],
-    },
+    }
   );
 }

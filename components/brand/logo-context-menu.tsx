@@ -1,36 +1,43 @@
 "use client";
 
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Fragment } from "react";
 import {
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
 } from "@/components/ui/context-menu";
-import { SITE_CONTENT } from "@/lib/constants";
+import { copySvgMarkup, downloadPng, downloadSvg } from "@/lib/brand/download";
 import {
+  type LogoVariantId,
   PNG_COLORS,
   PNG_SIZES,
-  type LogoVariantId,
   type PngColorKey,
 } from "@/lib/brand/tokens";
-import { copySvgMarkup, downloadPng, downloadSvg } from "@/lib/brand/download";
+import { SITE_CONTENT } from "@/lib/constants";
 
-type Props = {
-  variant: LogoVariantId;
+interface Props {
   showViewBrand?: boolean;
-};
+  variant: LogoVariantId;
+}
 
-export function LogoContextMenuContent({ variant, showViewBrand = true }: Props) {
+export function LogoContextMenuContent({
+  variant,
+  showViewBrand = true,
+}: Props) {
   const router = useRouter();
   const a = SITE_CONTENT.brandPage.actions;
   const colorKeys = Object.keys(PNG_COLORS) as PngColorKey[];
 
   return (
     <ContextMenuContent className="w-56">
-      <ContextMenuItem onSelect={() => void downloadSvg(variant)}>
+      <ContextMenuItem
+        onSelect={() => {
+          downloadSvg(variant);
+        }}
+      >
         {a.downloadSvg}
       </ContextMenuItem>
 
@@ -38,14 +45,17 @@ export function LogoContextMenuContent({ variant, showViewBrand = true }: Props)
 
       {colorKeys.map((color) => (
         <Fragment key={color}>
-          <ContextMenuLabel className="text-ink-3 text-[10px] tracking-[0.25em] uppercase">
-            {a.downloadPng} · {color === "light" ? a.downloadPngLight : a.downloadPngDark}
+          <ContextMenuLabel className="text-[10px] text-ink-3 uppercase tracking-[0.25em]">
+            {a.downloadPng} ·{" "}
+            {color === "light" ? a.downloadPngLight : a.downloadPngDark}
           </ContextMenuLabel>
           {PNG_SIZES.map((size) => (
             <ContextMenuItem
-              key={`${color}-${size}`}
-              onSelect={() => void downloadPng(variant, color, size)}
               className="pl-4"
+              key={`${color}-${size}`}
+              onSelect={() => {
+                downloadPng(variant, color, size);
+              }}
             >
               {size} px
             </ContextMenuItem>
@@ -55,7 +65,11 @@ export function LogoContextMenuContent({ variant, showViewBrand = true }: Props)
 
       <ContextMenuSeparator />
 
-      <ContextMenuItem onSelect={() => void copySvgMarkup(variant)}>
+      <ContextMenuItem
+        onSelect={() => {
+          copySvgMarkup(variant);
+        }}
+      >
         {a.copySvg}
       </ContextMenuItem>
 

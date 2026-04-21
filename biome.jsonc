@@ -1,0 +1,57 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ],
+  "files": {
+    "includes": ["**", "!.agents", "!.claude", "!.next"]
+  },
+  "overrides": [
+    {
+      "includes": ["components/ui/**", "hooks/**"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noNamespaceImport": "off"
+          },
+          "complexity": {
+            "noForEach": "off"
+          },
+          "style": {
+            "useDefaultSwitchClause": "off",
+            "noNestedTernary": "off"
+          },
+          "correctness": {
+            "noNestedComponentDefinitions": "off"
+          },
+          "a11y": {
+            "useSemanticElements": "off",
+            "noNoninteractiveElementInteractions": "off",
+            "useKeyWithClickEvents": "off",
+            "useFocusableInteractive": "off",
+            "useAriaPropsForRole": "off"
+          },
+          "suspicious": {
+            "noArrayIndexKey": "off",
+            "noDocumentCookie": "off"
+          },
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["app/twitter-image.tsx", "app/opengraph-image.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noBarrelFile": "off"
+          }
+        }
+      }
+    }
+  ]
+}

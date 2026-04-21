@@ -64,10 +64,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="es"
       className={`${cormorant.variable} ${ebGaramond.variable} ${imFell.variable} ${jetbrains.variable}`}
+      lang="es"
     >
-      <body className="font-sans antialiased bg-bg">
+      <body className="bg-bg font-sans antialiased">
         {children}
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

@@ -17,7 +17,9 @@ export function ScrollReveal({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      return;
+    }
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -47,7 +49,7 @@ export function ScrollReveal({
   }, [stagger]);
 
   return (
-    <div ref={ref} id={id} className={`scroll-reveal ${className}`}>
+    <div className={`scroll-reveal ${className}`} id={id} ref={ref}>
       {children}
     </div>
   );

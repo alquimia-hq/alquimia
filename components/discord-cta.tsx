@@ -2,8 +2,8 @@
 
 import { useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { DiscordIcon } from "./icons";
 import { SITE_CONTENT } from "@/lib/constants";
+import { DiscordIcon } from "./icons";
 
 const PARTICLE_COUNT = 18;
 
@@ -16,7 +16,8 @@ function spawnParticles(container: HTMLElement) {
     const particle = document.createElement("span");
     particle.className = "cta-particle";
 
-    const angle = (Math.PI * 2 * i) / PARTICLE_COUNT + (Math.random() - 0.5) * 0.4;
+    const angle =
+      (Math.PI * 2 * i) / PARTICLE_COUNT + (Math.random() - 0.5) * 0.4;
     const distance = 40 + Math.random() * 60;
     const tx = Math.cos(angle) * distance;
     const ty = Math.sin(angle) * distance - 30 - Math.random() * 40;
@@ -34,7 +35,9 @@ function spawnParticles(container: HTMLElement) {
     `;
 
     container.appendChild(particle);
-    particle.addEventListener("animationend", () => particle.remove(), { once: true });
+    particle.addEventListener("animationend", () => particle.remove(), {
+      once: true,
+    });
   }
 }
 
@@ -42,44 +45,48 @@ export function DiscordCta() {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleClick = useCallback(() => {
-    if (!wrapperRef.current) return;
+    if (!wrapperRef.current) {
+      return;
+    }
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReduced) return;
+    if (prefersReduced) {
+      return;
+    }
 
     spawnParticles(wrapperRef.current);
   }, []);
 
   return (
     <div
-      className="animate-entrance animate-fade-up flex flex-col items-center"
+      className="flex animate-entrance animate-fade-up flex-col items-center"
       style={{ "--delay": "750ms" } as React.CSSProperties}
     >
-      <div ref={wrapperRef} className="relative">
+      <div className="relative" ref={wrapperRef}>
         <Button
           asChild
-          className="btn-discord cta-idle inline-flex items-center gap-4.5 px-11 py-5 h-auto bg-gold text-primary-foreground border border-gold font-[family-name:var(--font-im-fell)] tracking-[0.3em] uppercase text-[13px] cursor-pointer"
+          className="btn-discord cta-idle inline-flex h-auto cursor-pointer items-center gap-4.5 border border-gold bg-gold px-11 py-5 font-[family-name:var(--font-im-fell)] text-[13px] text-primary-foreground uppercase tracking-[0.3em]"
           onClick={handleClick}
         >
           <a
             href={SITE_CONTENT.cta.discordUrl}
-            target="_blank"
             rel="noopener noreferrer"
+            target="_blank"
           >
-            <DiscordIcon className="w-[18px] h-[18px]" />
+            <DiscordIcon className="h-[18px] w-[18px]" />
             <span>{SITE_CONTENT.cta.button}</span>
-            <span className="font-serif text-[20px] tracking-normal italic">
+            <span className="font-serif text-[20px] italic tracking-normal">
               ⟶
             </span>
           </a>
         </Button>
       </div>
-      <p className="font-[family-name:var(--font-eb-garamond)] italic text-[13px] text-ink-3 mt-4.5">
-        <span className="inline-block w-[3px] h-[3px] bg-gold rotate-45 mx-2.5 align-middle" />
+      <p className="mt-4.5 font-[family-name:var(--font-eb-garamond)] text-[13px] text-ink-3 italic">
+        <span className="mx-2.5 inline-block h-[3px] w-[3px] rotate-45 bg-gold align-middle" />
         {SITE_CONTENT.cta.note}
-        <span className="inline-block w-[3px] h-[3px] bg-gold rotate-45 mx-2.5 align-middle" />
+        <span className="mx-2.5 inline-block h-[3px] w-[3px] rotate-45 bg-gold align-middle" />
       </p>
     </div>
   );

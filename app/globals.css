@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -40,11 +40,11 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-eb-garamond), 'EB Garamond', serif;
-  --font-serif: var(--font-eb-garamond), 'EB Garamond', serif;
-  --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
-  --font-ornament: var(--font-im-fell), 'IM Fell English SC', serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-sans: var(--font-eb-garamond), "EB Garamond", serif;
+  --font-serif: var(--font-eb-garamond), "EB Garamond", serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-ornament: var(--font-im-fell), "IM Fell English SC", serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -100,40 +100,77 @@
 
 /* Entrance animations */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-down {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scale-x-in {
-  from { opacity: 0; transform: scaleX(0); }
-  to { opacity: 1; transform: scaleX(1); }
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 @keyframes bg-fade-in {
-  from { opacity: 0; }
-  to { opacity: 0.22; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.22;
+  }
 }
 
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold), 0 8px 40px color-mix(in oklch, var(--gold) 25%, transparent); }
-  50% { box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold), 0 8px 60px color-mix(in oklch, var(--gold) 40%, transparent); }
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px var(--bg),
+      0 0 0 2px var(--gold),
+      0 8px 40px color-mix(in oklch, var(--gold) 25%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px var(--bg),
+      0 0 0 2px var(--gold),
+      0 8px 60px color-mix(in oklch, var(--gold) 40%, transparent);
+  }
 }
 
 .animate-entrance {
   opacity: 0;
-  animation-fill-mode: forwards;
   animation-timing-function: var(--ease-out-expo);
   animation-delay: var(--delay, 0ms);
+  animation-fill-mode: forwards;
 }
 
 .animate-fade-in {
@@ -167,26 +204,30 @@
 }
 
 .nav-link::after {
-  content: '';
   position: absolute;
+  right: 50%;
   bottom: 0;
   left: 50%;
-  right: 50%;
   height: 1px;
+  content: "";
   background: var(--gold);
-  transition: left 0.25s var(--ease-out-quart), right 0.25s var(--ease-out-quart);
+  transition:
+    left 0.25s var(--ease-out-quart),
+    right 0.25s var(--ease-out-quart);
 }
 
 .nav-link:hover::after {
-  left: 0;
   right: 0;
+  left: 0;
 }
 
 /* Scroll reveal */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+  transition:
+    opacity 0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
 }
 
 .scroll-reveal.is-visible {
@@ -200,8 +241,8 @@
   .scroll-reveal {
     opacity: 1 !important;
     transform: none !important;
-    animation: none !important;
     transition: none !important;
+    animation: none !important;
   }
 
   .scroll-reveal.is-visible {
@@ -216,7 +257,8 @@
 
 /* Background effects */
 .bg-vignette {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at center,
       transparent 0%,
       transparent 30%,
@@ -232,16 +274,19 @@
 }
 
 .bg-noise {
-  opacity: 0.35;
-  mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.35;
 }
 
 /* Button styles */
 .btn-discord {
-  box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold),
+  box-shadow:
+    0 0 0 1px var(--bg),
+    0 0 0 2px var(--gold),
     0 8px 40px color-mix(in oklch, var(--gold) 25%, transparent);
-  transition: background-color 0.25s var(--ease-out-quart),
+  transition:
+    background-color 0.25s var(--ease-out-quart),
     border-color 0.25s var(--ease-out-quart),
     box-shadow 0.3s var(--ease-out-quart),
     transform 0.25s var(--ease-out-quart);
@@ -250,7 +295,9 @@
 .btn-discord:hover {
   background-color: var(--gold-2);
   border-color: var(--gold-2);
-  box-shadow: 0 0 0 1px var(--bg), 0 0 0 2px var(--gold-2),
+  box-shadow:
+    0 0 0 1px var(--bg),
+    0 0 0 2px var(--gold-2),
     0 8px 60px color-mix(in oklch, var(--gold-2) 45%, transparent);
   transform: translateY(-1px);
 }
@@ -274,9 +321,9 @@
 
 .cta-particle {
   position: absolute;
+  z-index: 10;
   pointer-events: none;
   background: var(--gold);
-  animation: particle-rise 0.9s var(--ease-out-quart) forwards;
-  z-index: 10;
   box-shadow: 0 0 6px color-mix(in oklch, var(--gold) 60%, transparent);
+  animation: particle-rise 0.9s var(--ease-out-quart) forwards;
 }

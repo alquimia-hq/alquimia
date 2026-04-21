@@ -1,11 +1,11 @@
 import { BackgroundEffects } from "@/components/background-effects";
-import { LandingHeader } from "@/components/landing-header";
-import { LandingFooter } from "@/components/landing-footer";
-import { LogoCard } from "@/components/brand/logo-card";
 import { ColorSwatches } from "@/components/brand/color-swatches";
+import { LogoCard } from "@/components/brand/logo-card";
 import { TypographySpecimens } from "@/components/brand/typography-specimens";
-import { SITE_CONTENT } from "@/lib/constants";
+import { LandingFooter } from "@/components/landing-footer";
+import { LandingHeader } from "@/components/landing-header";
 import { LOGO_VARIANTS } from "@/lib/brand/tokens";
+import { SITE_CONTENT } from "@/lib/constants";
 
 export default function BrandPage() {
   const copy = SITE_CONTENT.brandPage;
@@ -17,11 +17,11 @@ export default function BrandPage() {
       <div className="relative z-[4] flex min-h-screen flex-col">
         <LandingHeader />
 
-        <main className="flex-1 px-14 pb-24 pt-10 max-lg:px-8 max-md:px-6">
+        <main className="flex-1 px-14 pt-10 pb-24 max-md:px-6 max-lg:px-8">
           <div className="mx-auto flex w-full max-w-5xl flex-col gap-20">
             {/* Intro */}
-            <header className="animate-entrance animate-fade-up flex flex-col items-center gap-3 text-center">
-              <span className="font-[family-name:var(--font-im-fell)] text-[11px] tracking-[0.4em] uppercase text-ink-3">
+            <header className="flex animate-entrance animate-fade-up flex-col items-center gap-3 text-center">
+              <span className="font-[family-name:var(--font-im-fell)] text-[11px] text-ink-3 uppercase tracking-[0.4em]">
                 {copy.eyebrow}
               </span>
               <h1
@@ -30,7 +30,7 @@ export default function BrandPage() {
               >
                 {copy.title}
               </h1>
-              <p className="max-w-xl font-[family-name:var(--font-eb-garamond)] text-[16px] italic leading-relaxed text-ink-3">
+              <p className="max-w-xl font-[family-name:var(--font-eb-garamond)] text-[16px] text-ink-3 italic leading-relaxed">
                 {copy.subtitle}
               </p>
             </header>
@@ -62,12 +62,18 @@ export default function BrandPage() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <section className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
         <span className="h-px flex-1 bg-rule" />
-        <h2 className="font-[family-name:var(--font-im-fell)] text-[12px] tracking-[0.4em] uppercase text-ink-2">
+        <h2 className="font-[family-name:var(--font-im-fell)] text-[12px] text-ink-2 uppercase tracking-[0.4em]">
           {title}
         </h2>
         <span className="h-px flex-1 bg-rule" />

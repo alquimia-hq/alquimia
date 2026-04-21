@@ -61,10 +61,22 @@ export const SITE_CONTENT = {
       typography: "Tipografía",
     },
     logoVariants: {
-      icon: { name: "Símbolo", desc: "Solo el sigilo, para íconos y avatares." },
-      horizontal: { name: "Horizontal", desc: "Símbolo y nombre en línea — la marca principal." },
-      stacked: { name: "Apilado", desc: "Composición cuadrada para redes y perfiles." },
-      wordmark: { name: "Logotipo", desc: "Solo el nombre, en su grabado original." },
+      icon: {
+        name: "Símbolo",
+        desc: "Solo el sigilo, para íconos y avatares.",
+      },
+      horizontal: {
+        name: "Horizontal",
+        desc: "Símbolo y nombre en línea — la marca principal.",
+      },
+      stacked: {
+        name: "Apilado",
+        desc: "Composición cuadrada para redes y perfiles.",
+      },
+      wordmark: {
+        name: "Logotipo",
+        desc: "Solo el nombre, en su grabado original.",
+      },
     },
     actions: {
       downloadSvg: "SVG",

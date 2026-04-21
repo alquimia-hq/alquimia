@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { AlquimiaLogo } from "./icons";
 import { SITE_CONTENT } from "@/lib/constants";
+import { HeaderLogoTrigger } from "./brand/header-logo-trigger";
 
 export function LandingHeader() {
   return (
@@ -9,10 +9,7 @@ export function LandingHeader() {
       style={{ "--delay": "900ms" } as React.CSSProperties}
     >
       {/* Brand */}
-      <div className="flex items-center gap-3 font-[family-name:var(--font-im-fell)] tracking-[0.34em] uppercase text-[11px] text-ink">
-        <AlquimiaLogo className="w-[26px] h-[26px] text-gold" />
-        <span>{SITE_CONTENT.brand}</span>
-      </div>
+      <HeaderLogoTrigger />
 
       {/* Center - Year */}
       <div className="font-[family-name:var(--font-im-fell)] tracking-[0.4em] text-[10px] text-ink-3 text-center flex items-center justify-center gap-3.5 max-md:hidden">
@@ -24,16 +21,10 @@ export function LandingHeader() {
       {/* Navigation */}
       <nav className="flex justify-end font-[family-name:var(--font-im-fell)] tracking-[0.3em] text-[10px] text-ink-3 gap-2">
         <Link
-          href="#manifiesto"
+          href="/brand"
           className="nav-link hover:text-gold transition-colors duration-200 py-2 px-3"
         >
-          {SITE_CONTENT.nav.manifiesto}
-        </Link>
-        <Link
-          href="#pilares"
-          className="nav-link hover:text-gold transition-colors duration-200 py-2 px-3"
-        >
-          {SITE_CONTENT.nav.pilares}
+          {SITE_CONTENT.nav.marca}
         </Link>
       </nav>
     </header>

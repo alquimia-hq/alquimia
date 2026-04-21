@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SITE_CONTENT } from "@/lib/constants";
 
 export function LandingFooter() {
@@ -7,8 +8,14 @@ export function LandingFooter() {
       style={{ "--delay": "900ms" } as React.CSSProperties}
     >
       <div>{SITE_CONTENT.footer.tagline}</div>
-      <div className="font-[family-name:var(--font-im-fell)] not-italic tracking-[0.36em] text-[10px]">
-        {SITE_CONTENT.footer.year}
+      <div className="flex items-center gap-5 font-[family-name:var(--font-im-fell)] not-italic tracking-[0.36em] text-[10px]">
+        <Link
+          href="/brand"
+          className="nav-link transition-colors duration-200 hover:text-gold"
+        >
+          {SITE_CONTENT.footer.marca}
+        </Link>
+        <span>{SITE_CONTENT.footer.year}</span>
       </div>
       <div>{SITE_CONTENT.footer.craft}</div>
     </footer>

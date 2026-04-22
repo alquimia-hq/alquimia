@@ -10,6 +10,7 @@ export const SITE_CONTENT = {
     eyebrow: "Comunidad Abierta",
     title: "Alquim",
     titleAccent: "ia",
+    titleSrSuffix: " — Comunidad abierta sobre IA y productividad",
     subtitle:
       "Una comunidad abierta y gratuita donde compartimos conocimiento sobre inteligencia artificial, automatización y productividad.",
   },

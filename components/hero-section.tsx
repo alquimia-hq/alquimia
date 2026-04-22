@@ -39,6 +39,7 @@ export function HeroSection() {
         <em className="font-light text-gold italic">
           {SITE_CONTENT.hero.titleAccent}
         </em>
+        <span className="sr-only">{SITE_CONTENT.hero.titleSrSuffix}</span>
       </h1>
 
       {/* Ornament Divider */}

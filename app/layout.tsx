@@ -34,10 +34,39 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
+const resolveSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return new URL(process.env.NEXT_PUBLIC_SITE_URL);
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  }
+  return new URL("https://alquimia.vercel.app");
+};
+
+const siteUrl = resolveSiteUrl();
+
+const title = "Alquimia | Comunidad";
+const description =
+  "Una comunidad abierta y gratuita donde compartimos conocimiento sobre inteligencia artificial, automatización y productividad.";
+
 export const metadata: Metadata = {
-  title: "Alquimia | Comunidad",
-  description:
-    "Una comunidad abierta y gratuita donde compartimos conocimiento sobre inteligencia artificial, automatización y productividad.",
+  metadataBase: siteUrl,
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Alquimia",
+    title,
+    description,
+    locale: "es_ES",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
   icons: {
     icon: [
       {
